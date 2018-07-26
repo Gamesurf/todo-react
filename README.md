@@ -1,6 +1,6 @@
 TODO LIST
 
-![Alt text](https://github.com/altercation/solarized/raw/master/img/solarized-palette.png)
+![Alt text](https://i1.wp.com/chartcons.com/wp-content/uploads/Funny-Cat-Jokes2.jpg)
 
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
