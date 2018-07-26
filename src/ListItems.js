@@ -3,15 +3,13 @@ import React from 'react';
 const ListItems = (props) => {
 
         const listItem = props.tasks.map((item, i) => {
-            return <li key={i}>{item}</li>;
+            return <li className='list__item' key={i}>{item}</li>;
         });
 
         return (
-            <div>
-                <ul>
+                <ul className='list'>
                     {listItem}
                 </ul>
-            </div>
         )
 }
 
