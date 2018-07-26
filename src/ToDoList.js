@@ -9,7 +9,7 @@ class ToDoList extends Component {
         }
     }
 
-    submitHandler(event) {
+    submitHandler = (event) => {
         event.preventDefault();
 
         const inputs = event.target.getElementsByClassName('formInput');
