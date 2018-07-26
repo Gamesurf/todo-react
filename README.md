@@ -1,6 +1,6 @@
 TODO LIST
 
-[Alt text](https://i1.wp.com/chartcons.com/wp-content/uploads/Funny-Cat-Jokes2.jpg?resize=1021%2C576&ssl=1 "Optional title
+[![Alt text](https://i1.wp.com/chartcons.com/wp-content/uploads/Funny-Cat-Jokes2.jpg?resize=1021%2C576&ssl=1 "Optional title)]
 
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
