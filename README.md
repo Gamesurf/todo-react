@@ -1,6 +1,6 @@
 TODO LIST
 
-![Alt text](https://i1.wp.com/chartcons.com/wp-content/uploads/Funny-Cat-Jokes2.jpg?resize=1021%2C576&ssl=1 "Optional title
+[Alt text](https://i1.wp.com/chartcons.com/wp-content/uploads/Funny-Cat-Jokes2.jpg?resize=1021%2C576&ssl=1 "Optional title
 
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
@@ -22,8 +22,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
