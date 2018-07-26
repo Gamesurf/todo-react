@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class ListItems extends Component {
-    render() {
+const ListItems = (props) => {
 
-        const listItem = this.props.tasks.map((item, i) => {
+        const listItem = props.tasks.map((item, i) => {
             return <li key={i}>{item}</li>;
         });
 
@@ -14,7 +13,6 @@ class ListItems extends Component {
                 </ul>
             </div>
         )
-    }
 }
 
 export default ListItems;
