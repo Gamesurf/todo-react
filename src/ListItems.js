@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 
-class List extends Component {
+class ListItems extends Component {
     render() {
 
-        const list = this.props.elementValues.map((item, i) => {
+        const listItem = this.props.tasks.map((item, i) => {
             return <li key={i}>{item}</li>;
         });
 
         return (
             <div>
                 <ul>
-                    {list}
+                    {listItem}
                 </ul>
             </div>
         )
     }
 }
 
-export default List;
+export default ListItems;

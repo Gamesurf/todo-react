@@ -1,23 +1,25 @@
 import React, {Component} from 'react';
-import List from './List';
+import ListItems from './ListItems';
 
 class ToDoList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            elementValues: []
+            tasks: []
         }
     }
 
     submitHandler(event) {
         event.preventDefault();
 
-        const formElements = event.target.elements;
+        const inputs = event.target.getElementsByClassName('formInput');
 
-        for (let element of formElements) {
-            if (element.tagName === 'INPUT' && element.value.length) {
-                this.setState({elementValues: [...this.state.elementValues, element.value]});
-                element.value = '';
+        for (let input of inputs) {
+            if (input.value.length > 3) {
+                this.setState({tasks: [...this.state.tasks, input.value]});
+                input.value = '';
+            } else {
+                alert('Minimum three characters')
             }
         }
     }
@@ -25,14 +27,12 @@ class ToDoList extends Component {
     render() {
 
         return (
-            <div className={'todo-list'}>
+            <div className='todoList'>
                 <form onSubmit={this.submitHandler.bind(this)}>
-                    <input type="text"/>
+                    <input className='formInput' type="text"/>
                     <button type="submit">Submit</button>
                 </form>
-                <ul>
-                    <List elementValues={this.state.elementValues}/>
-                </ul>
+                <ListItems tasks={this.state.tasks}/>
             </div>
         )
     }
