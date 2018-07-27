@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 import ListItems from './ListItems';
 
 class ToDoList extends Component {
@@ -8,6 +11,8 @@ class ToDoList extends Component {
 			tasks: []
 		}
 	}
+
+	confirmMsg = withReactContent(Swal);
 
 	reverse = () => {
 		this.setState(this.state.tasks.reverse())
@@ -24,12 +29,13 @@ class ToDoList extends Component {
 				this.setState({tasks: [...this.state.tasks, input.value]});
 				input.value = '';
 			} else {
-				alert('Please enter ' + (maxLength - input.value.length) + ' more')
+				this.confirmMsg.fire('Please enter ' + (maxLength - input.value.length) + ' more')
 			}
 		}
 	};
 
 	render() {
+
 
 		return (
 			<div className='todoList'>
