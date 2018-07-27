@@ -1,50 +1,51 @@
 * {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 body {
-    font: 1rem/1 Helvetica sans-serif;
+	font: 1rem/1 Helvetica sans-serif;
 }
 
 .todoList {
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-    margin: auto;
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+	margin: auto;
 }
 
 .formButton {
-    background: dodgerblue;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+	background: dodgerblue;
+	color: #fff;
+	border: none;
+	cursor: pointer;
 }
 
 .formButton:hover {
-    background: lightgray;
+	background: lightgray;
 }
 
 .form {
-    display: flex;
+	display: flex
 }
 
 .form__item {
-    flex: auto;
-    padding: 10px;
-    outline: lightgray;
+	flex: auto;
+	padding: 10px;
+	outline: lightgray;
+	text-transform: uppercase;
 }
 
 .list {
-    margin: 10px 0;
-    list-style-type: none;
-    text-transform: uppercase;
-    border: 1px solid lightgrey;
+	margin: 10px 0;
+	list-style-type: none;
+	text-transform: uppercase;
 }
 
 .list__item {
-    padding: 10px;
+	padding: 10px;
 }
+
 .list__item:nth-child(even) {
-    background: lightgrey;
+	background: lightgrey;
 }
