@@ -3,56 +3,77 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { Button, Switch, Input } from 'antd';
 import 'antd/dist/antd.css';
-
-import ListItems from './ListItems';
+import ToDoItem from './ToDoItem';
 
 class ToDoList extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			tasks: []
+			tasks: [],
+			isReversed: false
 		}
 
+		this.confirmMsg = withReactContent(Swal);
 	}
 
 	onChange = () => {
-		this.setState(this.state.tasks.reverse())
+		this.setState(prevState => ({ tasks: prevState.tasks.reverse(), isReversed: !prevState.isReversed }));
 	};
-
-	confirmMsg = withReactContent(Swal);
-
-
 
 	submitHandler = (event) => {
 		event.preventDefault();
 
-		const inputs = event.target.getElementsByClassName('formInput');
-		const maxLength = 3;
+		const formElements = event.target.elements;
+		const MAX_LENGTH = 3;
+		const { isReversed, tasks: TASKS_LIST } = this.state;
 
-		for (let input of inputs) {
-			if (input.value.length >= maxLength) {
-				this.setState({tasks: [...this.state.tasks, input.value]});
-				input.value = '';
+		for (let element of formElements) {
+			const elementValue = element.value;
 
-			} else {
-				this.confirmMsg.fire('Please enter ' + (maxLength - input.value.length) + ' more')
+			if (element.classList.contains('formInput')) {
+				if (elementValue.length >= MAX_LENGTH) {
+					if (isReversed) {
+						this.setState({ tasks: [elementValue, ...TASKS_LIST] });
+					} else {
+						this.setState({ tasks: [...TASKS_LIST, elementValue] });
+					}
+
+					element.value = '';
+				} else {
+					this.confirmMsg.fire(`Please enter ${MAX_LENGTH - elementValue.length} more characters.`);
+				}
 			}
 		}
 	};
 
-	render() {
+	removeToDoItem = (toDoKey) => {
+		let newToDoList = [...this.state.tasks];
+		
+		newToDoList.splice(toDoKey, 1);
+		this.setState({ tasks: newToDoList });
+	}
 
+	render() {
+		const TASKS_LIST = this.state.tasks;
 
 		return (
 			<div className='todoList'>
-				<form className='form' onSubmit={this.submitHandler.bind(this)}>
-					<Input className='formInput form__item' type="text"/>
-					<Button type="primary" className='formButton form__item' htmlType={'submit'}>Submit</Button>
+				<form className='form' onSubmit={this.submitHandler}>
+					<Input className='formInput form__item' type="text" />
+					<Button type="primary" className='formButton form__item' htmlType="submit">Submit</Button>
 				</form>
-				<div>Reverse list <Switch className='switchList' onChange={this.onChange} /></div>
-				<ListItems tasks={this.state.tasks}/>
+				<div>
+					<span>Reverse list</span>
+					<Switch className='switchList' onChange={this.onChange} />
+				</div>
+				<ul className='list'>
+					{TASKS_LIST.map((item, i) => (
+						<ToDoItem task={item} key={i} toDoKey={i} removeToDoItem={this.removeToDoItem} />
+					))}
+				</ul>
 			</div>
-		)
+		);
 	}
 }
 
